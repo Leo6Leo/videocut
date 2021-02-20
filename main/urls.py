@@ -21,5 +21,6 @@ from . import views
 app_name = 'main'
 urlpatterns = [
     path('',views.index,name='index'),
-    path("download/",views.download_video,name='download')
+    path("download/",views.download_video,name='download'),
+    path("cut/",views.cut_video,name="cut")
 ]
