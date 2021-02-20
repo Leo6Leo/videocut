@@ -1,0 +1,13 @@
+
+{% extend "base.html" %}
+
+{% block content %}
+
+<form method="post" action="{% url 'main:download' %}">
+    {% csrf_token %}
+<input type="text" name="urlname" placeholder="please input the URL of the video">
+<button type="submit">Submit</button>
+
+    </form>
+
+{% endblock content %}

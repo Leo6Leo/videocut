@@ -1,0 +1,62 @@
+header {
+	background-color: cyan;
+}
+
+header::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+nav {
+	float: left;
+}
+
+nav li {
+	display: inline-block;
+	margin-right: 80px;
+	padding-top: ;
+
+	position: relative;
+
+}
+
+nav a {
+	color: purple;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 15px;
+}
+
+nav a:hover {
+	color: black;
+}
+
+nav a::after {
+	content:'';
+	display: block;
+	height: 5px;
+	width: 100%;
+	background-color: purple;
+
+	position: absolute;
+	top: 0;
+	width: 0%;
+
+}
+
+nav a:hover::after {
+	width: 100%;
+}
+
+form {
+	text-align: center;
+}
+
+
+
