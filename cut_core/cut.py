@@ -4,11 +4,11 @@ import os
 import shutil
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 
-# Input file path
+# Input path
 input_file = "../static/video.mp4"
-# Output file path
+# Output path
 output_file = "../static/edited.mp4"
-# Silence timestamps
+# Silence timestamps file
 silence_file = "out.txt"
 
 # Ease in duration between cuts
@@ -20,11 +20,8 @@ except IndexError:
 minimum_duration = 1.0
 
 def main():
-    # number of clips generated
     count = 0
-    # start of next clip
     last = 0
-
     opened_file = open(silence_file, "r", errors='replace')
     video = VideoFileClip(input_file)
     whole_duration = video.duration
@@ -41,8 +38,8 @@ def main():
 
         start = float(last)
         clip_duration = float(to) - start
-        # Clips less than one seconds don't seem to work
-        print("Clip Duration: {} seconds".format(clip_duration))
+
+        print("Video length: {} seconds".format(clip_duration))
 
         if clip_duration < minimum_duration:
             continue
@@ -53,14 +50,14 @@ def main():
         if start > ease:
             start -= ease
 
-        print("Clip {} (Start: {}, End: {})".format(count, start, to))
+        print("Silence {} (Start: {}, End: {})".format(count, start, to))
         clip = video.subclip(start, to)
         clips.append(clip)
         last = end
         count += 1
 
     if whole_duration - float(last) > minimum_duration:
-        print("Clip {} (Start: {}, End: {})".format(count, last, 'EOF'))
+        print("Silence {} (Start: {}, End: {})".format(count, last, 'EOF'))
         clips.append(video.subclip(float(last)-ease))
 
     processed_video = concatenate_videoclips(clips)
