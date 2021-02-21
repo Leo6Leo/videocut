@@ -1,3 +1,133 @@
+section {
+	width: 100%;
+	height: 93vh;
+	color: #fff;
+	background: linear-gradient(-45deg, red, orange, yellow, green);
+	background-size: 400% 400%;
+	position: relative;
+	animation-name: move;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	z-index: -1;
+	opacity: 0.8;
+}
+
+section h1 {
+	font-size: 20px;
+	position: center;
+}
+
+@keyframes move {
+	0%{
+		background-position: 0 50%;
+	}
+	25%{
+		background-position: 50% 50%;
+	}
+	50%{
+		background-position: 100% 50%;
+	}
+	75%{
+		background-position: 50% 50%;
+	}
+	100%{
+		background-position: 0 50%;
+	}
+}
+
+.animated-circles {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.animated-circles li{
+	position: absolute;
+	display: block;
+	border-radius: 50%;
+	list-style: none;
+	width: 25px;
+	height: 25px;
+	animation-name: animate;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	background: rgba(255, 255, 255, 0.5);
+	bottom: -150px;
+}
+
+.animated-circles li:nth-child(1){
+	left:0%;
+	width: 100px;
+	height:100px;
+	animation-delay: 0s;
+}
+
+.animated-circles li:nth-child(2){
+	left:31%;
+	width: 50px;
+	height:50px;
+	animation-delay: 3.5s;
+}
+
+.animated-circles li:nth-child(3){
+	left:87%;
+	width: 80px;
+	height:80px;
+	animation-delay: 5s;
+}
+
+.animated-circles li:nth-child(4){
+	left:55%;
+	width: 15px;
+	height:15px;
+	animation-delay: 0.5s;
+}
+
+.animated-circles li:nth-child(5){
+	left:95%;
+	width: 120px;
+	height:120px;
+	animation-delay: 7.5s;
+}
+
+.animated-circles li:nth-child(6){
+	left:42%;
+	width: 80px;
+	height:80px;
+	animation-delay: 2.4s;
+}
+
+.animated-circles li:nth-child(7){
+	left:24%;
+	width: 80px;
+	height:80px;
+	animation-delay: 1.2s;
+}
+
+.animated-circles li:nth-child(8){
+	left:67%;
+	width: 80px;
+	height:80px;
+	animation-delay: 7s;
+}
+
+@keyframes animate{
+	0%{
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	100%{
+		transform: translateY(-1200px);
+		opacity: 0;
+	}
+}
+
 header {
 	background-color: cyan;
 }
@@ -15,6 +145,11 @@ header::after {
 
 nav {
 	float: left;
+}
+
+.nav-font {
+	font-family: 'Alegreya';
+	font-size: 200%;
 }
 
 nav li {
