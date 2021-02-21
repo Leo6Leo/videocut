@@ -16,12 +16,12 @@ def index(request):
 
 def download_video(request):
     url_link = request.POST["urlname"]
-    urllib.request.urlretrieve(url_link, 'cut_core/video.mp4')
+    urllib.request.urlretrieve(url_link, './static/video.mp4')
     return render(request,"success.html")
 
 
 def cut_video(request):
-    os.chdir("C:\\pyproj\\uofthacks\\cut_core")
+    os.chdir("C:\\pyproj\\uofthacks\\static")
     os.system('ffmpeg -i video.mp4 -af silencedetect=noise=-20dB:d=0.2 -f null - 2> output.txt')
     # read txt method one
     f = open("./output.txt")

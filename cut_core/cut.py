@@ -5,7 +5,7 @@ import shutil
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 
 # Input file path
-file_in = "video.mp4"
+file_in = "../static/video.mp4"
 # Output file path
 file_out = "../static/edited.mp4"
 # Silence timestamps
