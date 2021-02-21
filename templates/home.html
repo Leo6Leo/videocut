@@ -1,13 +1,32 @@
 
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
-<form method="post" action="{% url 'main:download' %}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script>
+function submitform() {
+                $(".btn").attr("disabled", true);
+                $("#spinner").show();
+                $("#urlform").submit()
+            }
+</script>
+    <meta charset="UTF-8">
+    <div class="container-fluid col-lg-7">
+    <div class="alert alert-primary" role="alert">
+        <h1 style="text-align: center;">Lecture-go</h1>
+<form name="urlform" id="urlform" method="post"  action="{% url 'main:download' %}">
     {% csrf_token %}
-<input type="text" name="urlname" placeholder="please input the URL of the video">
-<button type="submit">Submit</button>
+<input class="form-control" type="text" name="urlname" placeholder="please input the URL of the video">
+<br>
+    <button class="btn btn-success" onclick="submitform()">Next</button> <div class="spinner-border" style="display: none" id="spinner" role="status"></div>
+
+
 
     </form>
-
+    </div>
+    </div>
 {% endblock content %}

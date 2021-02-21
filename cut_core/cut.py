@@ -7,7 +7,7 @@ from moviepy.editor import VideoFileClip, concatenate_videoclips
 # Input file path
 file_in = "video.mp4"
 # Output file path
-file_out = "edited.mp4"
+file_out = "../static/edited.mp4"
 # Silence timestamps
 silence_file = "out.txt"
 

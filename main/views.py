@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
 import urllib.request
@@ -16,13 +16,13 @@ def index(request):
 
 def download_video(request):
     url_link = request.POST["urlname"]
-    urllib.request.urlretrieve(url_link, 'media/video.mp4')
-    return HttpResponse("success")
+    urllib.request.urlretrieve(url_link, 'cut_core/video.mp4')
+    return render(request,"success.html")
 
 
 def cut_video(request):
     os.chdir("C:\\pyproj\\uofthacks\\cut_core")
-    os.system('ffmpeg -i video.mp4 -af silencedetect=noise=-30dB:d=0.2 -f null - 2> output.txt')
+    os.system('ffmpeg -i video.mp4 -af silencedetect=noise=-20dB:d=0.2 -f null - 2> output.txt')
     # read txt method one
     f = open("./output.txt")
     f_out = open('./out.txt', 'w')
@@ -39,7 +39,11 @@ def cut_video(request):
             f_out.write("\n")
         line = f.readline()
     f.close()
+    f_out.close()
 
     main()
 
-    return HttpResponse("cut_process")
+    return redirect("main:result")
+
+def result(request):
+    return render(request,"result.html")

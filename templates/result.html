@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+ <div class="container-fluid col-lg-7" style="text-align: center">
+    <div class="alert alert-primary" role="alert">
+<h1>Hey,this is the cutted video! Enjoy</h1>
+        <br>
+<script type="text/javascript" src="{% static "ckplayer/ckplayer/ckplayer.js" %}" charset="utf-8" data-name="ckplayer"></script>
+<div class="text-center">
+        <div class="video" style="width: 600px;height: 400px;">container</div>
+<script type="text/javascript">
+    // from the official document of ckplayer
+    //定义一个变量：videoObject，用来做为视频初始化配置
+    var videoObject = {
+        container: '.video', //“#”代表容器的ID，“.”或“”代表容器的class
+        variable: 'player', //播放函数名称，该属性必需设置，值等于下面的new ckplayer()的对象
+        video: '{% static "edited.mp4" %}'//视频地址
+    };
+    var player = new ckplayer(videoObject);//初始化播放器
+</script>
+    </div>
+ </div>
+     </div>
+</body>
+</html>
