@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-	<link href="styles.css" rel="stylesheet">
+	<link href="{% static "styles.css" %}" rel="stylesheet">
     
     <!-- Required meta tags -->
     <meta charset="UTF-8">
@@ -26,8 +28,8 @@
 	<div class="container">
 		<nav>
 			<ul>
-			 <li><a class= "nav-font" href = "base.html">Video Cutter</a></li>
-			 <li><a class= "nav-font" href = "about.html">About</a></li>
+			 <li><a class= "nav-font" href = "{% url 'main:index' %}">Video Cutter</a></li>
+			 <li><a class= "nav-font" href = "{% url 'main:about' %}">About</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -47,7 +49,7 @@
  
  <section>
 
- 	<h1> TEST ELEMENT </h1>
+
 
 
 
