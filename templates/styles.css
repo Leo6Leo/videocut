@@ -128,10 +128,6 @@ section h1 {
 	}
 }
 
-header {
-	background-color: cyan;
-}
-
 header::after {
 	content: '';
 	display: table;
