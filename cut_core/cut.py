@@ -5,9 +5,9 @@ import shutil
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 
 # Input file path
-file_in = "../static/video.mp4"
+input_file = "../static/video.mp4"
 # Output file path
-file_out = "../static/edited.mp4"
+output_file = "../static/edited.mp4"
 # Silence timestamps
 silence_file = "out.txt"
 
@@ -25,12 +25,12 @@ def main():
     # start of next clip
     last = 0
 
-    in_handle = open(silence_file, "r", errors='replace')
-    video = VideoFileClip(file_in)
-    full_duration = video.duration
+    opened_file = open(silence_file, "r", errors='replace')
+    video = VideoFileClip(input_file)
+    whole_duration = video.duration
     clips = []
     while True:
-        line = in_handle.readline()
+        line = opened_file.readline()
 
         if not line:
             break
@@ -47,7 +47,7 @@ def main():
         if clip_duration < minimum_duration:
             continue
 
-        if full_duration - to < minimum_duration:
+        if whole_duration - to < minimum_duration:
             continue
 
         if start > ease:
@@ -59,18 +59,18 @@ def main():
         last = end
         count += 1
 
-    if full_duration - float(last) > minimum_duration:
+    if whole_duration - float(last) > minimum_duration:
         print("Clip {} (Start: {}, End: {})".format(count, last, 'EOF'))
         clips.append(video.subclip(float(last)-ease))
 
     processed_video = concatenate_videoclips(clips)
     processed_video.write_videofile(
-        file_out,
+        output_file,
         fps=60,
         preset='ultrafast',
         codec='libx264'
     )
 
-    in_handle.close()
+    opened_file.close()
     video.close()
 
